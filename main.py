@@ -10,9 +10,11 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
+import os
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = b'\xd7\x19\xb5\xffN\xd7}\x91\x9d>\x15\xf2\xad\xcacb'
+app.config['SECRET_KEY'] = os.environ.get("APP_SECRET_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
@@ -88,7 +90,7 @@ class Comment(db.Model, Base):
     text = db.Column(db.String(300), nullable=False)
 
 
-db.create_all()
+# db.create_all()
 
 
 def admin_only(f):
