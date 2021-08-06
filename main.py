@@ -14,7 +14,7 @@ import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = b'\xd7\x19\xb5\xffN\xd7}\x91\x9d>\x15\xf2\xad\xcacb'
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY",  "sqlite:///blog.db")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
@@ -32,7 +32,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Base = declarative_base()
