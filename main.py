@@ -90,7 +90,7 @@ class Comment(db.Model, Base):
     text = db.Column(db.String(300), nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 
 def admin_only(f):
