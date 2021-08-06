@@ -14,7 +14,7 @@ import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("APP_SECRET_KEY")
+app.config['SECRET_KEY'] = b'\xd7\x19\xb5\xffN\xd7}\x91\x9d>\x15\xf2\xad\xcacb'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
